@@ -16,13 +16,13 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/github_actions
+          chmod 600 ~/.ssh/github_actions
           ssh-keyscan -H task-manager.ithubacademy.uz >> ~/.ssh/known_hosts
 
       - name: Deploy to Ubuntu Server
         run: |
-          ssh -i ~/.ssh/id_rsa root@task-manager.ithubacademy.uz << EOF
+          ssh -i ~/.ssh/github_actions root@task-manager.ithubacademy.uz << EOF
             cd /root/task-manager
             git pull origin main
             source env/bin/activate

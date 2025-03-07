@@ -6,7 +6,7 @@ tasks = []
 
 @app.get('/')
 def read_root():
-    return {"message":"Task manager API"}
+    return {"message":"Task manager API v1"}
 
 @app.post('/tasks')
 def create_task(task: str):
